@@ -24,4 +24,18 @@ public abstract class Konto {
     public String getEmail() {
         return email;
     }
+
+    // Setter-Methoden
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+
+    @Override
+    public String toString() {
+        return "Konto{" +
+                "nutzername='" + nutzername + '\'' +
+                ", passwort='" + passwort + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

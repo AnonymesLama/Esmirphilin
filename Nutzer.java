@@ -36,4 +36,35 @@ abstract class Nutzer extends Konto {
     public String getAdresse() {
         return adresse;
     }
+
+    // Setter-Methoden
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public void setAnrede(String anrede) {
+        this.anrede = anrede;
+    }
+
+    public void setTelefonnummer(String telefonnummer) {
+        this.telefonnummer = telefonnummer;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    @Override
+    public String toString() {
+        return "Nutzer{" +
+                "vorname='" + vorname + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", anrede='" + anrede + '\'' +
+                ", telefonnummer='" + telefonnummer + '\'' +
+                ", adresse='" + adresse + '\'' +
+                '}';
+    }
 }
