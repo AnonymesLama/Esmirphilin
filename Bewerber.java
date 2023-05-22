@@ -5,17 +5,13 @@ public class Bewerbung {
     private boolean raucher;
     private boolean vorstrafen;
 
-    public Bewerbung(int anzahlPersonen, int haustiere, boolean raucher, boolean vorstrafen) {
+    public Bewerbung(int haustiere, boolean raucher, boolean vorstrafen) {
         this.anzahlPersonen = anzahlPersonen;
         this.haustiere = haustiere;
         this.raucher = raucher;
         this.vorstrafen = vorstrafen;
     }
-
-    public int getAnzahlPersonen() {
-        return anzahlPersonen;
-    }
-
+    
     public int getHaustiere() {
         return haustiere;
     }
