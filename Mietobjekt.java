@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.List;
 
 public class Mietobjekt implements Comparable<Mietobjekt> {
 	private boolean deactivated = false;
@@ -23,6 +24,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     private double preisProQuadratmeter;
     private double nebenkosten;
     private Vermieter verm;
+    private List<Bewerbung> bewerbungen;
     
 	public Mietobjekt(double kaltmiete, double warmmiete, double raeume, double wohnflaeche, double stockwerke, boolean wgEignung,
             LocalDate fruehestesEinzugsdatum, boolean keller, boolean balkon, boolean badfenster, boolean kuechenfenster,
@@ -126,6 +128,10 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 		return verm;
 	}
 
+    public List<Bewerbung> getBewerbungen() {
+        return bewerbungen;
+    }
+
 	// Setter-Methoden
 
     public void setMoebeliert(boolean moebeliert) {
@@ -162,6 +168,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
                 ", preisProQuadratmeter=" + preisProQuadratmeter +
                 ", nebenkosten=" + nebenkosten +
                 ", verm=" + verm +
+                ", bewerbungen=" + bewerbungen +
                 '}';
     }
 
@@ -170,9 +177,9 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 	    deactivated = true;
 
         // Entferne alle Bewerbungen für dieses Mietobjekt
-//		    for (Bewerbung bewerbung : bewerbungen) {
-//		        bewerbung.remove();
-//		    }
+		    for (Bewerbung bewerbung : bewerbungen) {
+		        bewerbungen.remove(bewerbung);
+		    }
 	}
 
     @Override
