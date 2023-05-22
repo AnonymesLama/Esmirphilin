@@ -1,6 +1,5 @@
 
 public class Bewerbung {
-    private int anzahlPersonen;
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
