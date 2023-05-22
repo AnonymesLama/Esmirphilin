@@ -1,5 +1,5 @@
 
-public class Bewerbung {
+public class Bewerber {
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
