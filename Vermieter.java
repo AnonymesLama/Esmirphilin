@@ -21,6 +21,10 @@ public class Vermieter extends Nutzer implements Comparable<Vermieter>{
 
     public boolean isFreigegeben() { return freigegeben; }
 
+    public void freigeben() { this.freigegeben = true; }
+
+    public void sperren() { this.freigegeben = false; }
+
     // Fachmethoden
 
     public static int compare(Vermieter verm, Vermieter verm1) {
