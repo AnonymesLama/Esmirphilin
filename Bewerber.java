@@ -1,29 +1,72 @@
 import java.util.ArrayList;
 
+
+/**
+ * Klasse Bewerber
+ * Zweck: Realisiert eine neue Bewerbung, der von der Klasse Nutzer erbt.
+ *
+ * @author
+ * @version 1
+ * Historie:
+ */
+
 public class Bewerber extends Nutzer implements Comparable<Bewerber> {
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
 
+    /**
+     * Bewerber Konstruktor
+     * Vorbedingung: Es darf vorausgesetzt werden, dass alle nötigen Attribute deklariert sind.
+     * Effekt: Instanziierung eines neuen Bewerbers.
+     *
+     * @param nutzername    the nutzername
+     * @param passwort      the passwort
+     * @param email         the email
+     * @param vorname       the vorname
+     * @param nachname      the nachname
+     * @param anrede        the anrede
+     * @param telefonnummer the telefonnummer
+     * @param adresse       the adresse
+     * @param haustiere     the haustiere
+     * @param raucher       the raucher
+     * @param vorstrafen    the vorstrafen
+     */
+    
     public Bewerber(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse, int haustiere, boolean raucher, boolean vorstrafen) {
         super(nutzername, passwort, email, vorname, nachname, anrede, telefonnummer, adresse);
         this.haustiere = haustiere;
         this.raucher = raucher;
         this.vorstrafen = vorstrafen;
     }
+
+    /**
+     * Alle folgenden Methoden sind Getter-Methoden
+     *
+     * @return geben jeweils den Wert der Variable zurück
+     */
     
     public int getHaustiere() {
         return haustiere;
     }
 
+    
     public boolean isRaucher() {
         return raucher;
     }
 
+    
     public boolean hasVorstrafen() {
         return vorstrafen;
     }
 
+    /**
+     * ToString Fachmethode
+     * Effekt: gibt eine String-Repräsentation der Klasse zurück
+     *
+     * @return String (siehe Effekt)
+     */
+    
     @Override
     public String toString() {
         return super.toString() + "Bewerber{" +
@@ -33,6 +76,14 @@ public class Bewerber extends Nutzer implements Comparable<Bewerber> {
                 '}';
     }
 
+    /**
+     * CompareTo Methode
+     * Effekt: Ermöglicht den Vergleich aller Variablen
+     *
+     * @param other
+     * @return liefert den Vergleichswert zurück
+     */
+    
     @Override
     public int compareTo(Bewerber other) {
         int nutzernameComparison = this.getNutzername().compareTo(other.getNutzername());
