@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Vermieter extends Nutzer implements Comparable<Vermieter>{
     private List<Mietobjekt> mietobjekte;
+    private boolean freigegeben = false;
 
     //Konstruktor
 
@@ -11,6 +12,14 @@ public class Vermieter extends Nutzer implements Comparable<Vermieter>{
         super(nutzername, passwort, email, vorname, nachname, anrede, telefonnummer, adresse);
         mietobjekte = new ArrayList<>();
     }
+
+    // Getter und Setter
+
+    public List<Mietobjekt> getMietobjekte() {
+        return mietobjekte;
+    }
+
+    public boolean isFreigegeben() { return freigegeben; }
 
     // Fachmethoden
 
@@ -27,15 +36,12 @@ public class Vermieter extends Nutzer implements Comparable<Vermieter>{
         mietobjekt.deactivate();
         mietobjekte.remove(mietobjekt); // Entferne das Mietobjekt aus der Liste der Vermieter-Mietobjekte
     }
-    
-    public List<Mietobjekt> getMietobjekte() {
-        return mietobjekte;
-    }
 
     @Override
     public String toString() {
         return super.toString() + "Vermieter{" +
                 "mietobjekte=" + mietobjekte +
+                "freigegeben=" + freigegeben +
                 '}';
     }
 
@@ -79,6 +85,11 @@ public class Vermieter extends Nutzer implements Comparable<Vermieter>{
         int adresseComparison = this.getAdresse().compareTo(other.getAdresse());
         if (adresseComparison != 0) {
             return adresseComparison;
+        }
+
+        int freigegebenComparison = Boolean.compare(this.freigegeben, other.isFreigegeben());
+        if (freigegebenComparison != 0) {
+            return freigegebenComparison;
         }
 
         // Falls die Listen unterschiedlich lang sind, vergleiche die Längen
