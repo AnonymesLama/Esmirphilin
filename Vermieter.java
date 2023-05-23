@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Vermieter extends Nutzer implements Comparable<Vermieter>{
@@ -31,7 +32,7 @@ public class Vermieter extends Nutzer implements Comparable<Vermieter>{
         return verm1.compareTo(verm);
     }
 
-    public void erstelleMietobjekt(double kaltmiete, double warmmiete, int raeume, double wohnflaeche, int stockwerke, boolean wgEignung, LocalDate fruehestesEinzugsdatum, boolean hasKeller, boolean hasBalkon, boolean hasBadfenster, boolean hasKuechenfenster, boolean hasAufzug, boolean isRollstuhleignung, boolean hasEinbaukueche, boolean hasBadewanne, boolean isMoebeliert, Vermieter verm) {
+    public void erstelleMietobjekt(double kaltmiete, double warmmiete, int raeume, double wohnflaeche, int stockwerke, boolean wgEignung, Date fruehestesEinzugsdatum, boolean hasKeller, boolean hasBalkon, boolean hasBadfenster, boolean hasKuechenfenster, boolean hasAufzug, boolean isRollstuhleignung, boolean hasEinbaukueche, boolean hasBadewanne, boolean isMoebeliert, Vermieter verm) {
         Mietobjekt mietobjekt = new Mietobjekt(kaltmiete, warmmiete, raeume, wohnflaeche, stockwerke, wgEignung, fruehestesEinzugsdatum, hasKeller, hasBalkon, hasBadfenster, hasKuechenfenster, hasAufzug, isRollstuhleignung, hasEinbaukueche, hasBadewanne, isMoebeliert, verm);
         mietobjekte.add(mietobjekt);
     }
