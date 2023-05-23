@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Mietobjekt implements Comparable<Mietobjekt> {
@@ -9,7 +10,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     private double wohnflaeche;
     private double stockwerke;
     private boolean wgEignung;
-    private LocalDate fruehestesEinzugsdatum;
+    private Date fruehestesEinzugsdatum;
     //Wohnungsausstattung
     private boolean keller;
     private boolean balkon;
@@ -27,7 +28,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     private List<Bewerbung> bewerbungen;
     
 	public Mietobjekt(double kaltmiete, double warmmiete, double raeume, double wohnflaeche, double stockwerke, boolean wgEignung,
-            LocalDate fruehestesEinzugsdatum, boolean keller, boolean balkon, boolean badfenster, boolean kuechenfenster,
+            Date fruehestesEinzugsdatum, boolean keller, boolean balkon, boolean badfenster, boolean kuechenfenster,
             boolean aufzug, boolean rollstuhleignung, boolean einbaukueche, boolean badewanne, boolean moebeliert, Vermieter verm) {
         this.kaltmiete = kaltmiete;
         this.warmmiete = warmmiete;
@@ -78,7 +79,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         return wgEignung;
     }
 
-    public LocalDate getFruehestesEinzugsdatum() {
+    public Date getFruehestesEinzugsdatum() {
         return fruehestesEinzugsdatum;
     }
 
