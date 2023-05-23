@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * Klasse Mietobjekt
  * Zweck: Realisiert ein mögliches Mietobjekt
+ *
  * @author
  * @version 1
  * Historie:
@@ -88,6 +89,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
     /**
      * Alle folgenden Methoden sind Getter-Methoden
+     *
      * @return geben jeweils den Wert der Variable zurück
      */
 
@@ -191,6 +193,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
     /**
      * Alle folgenden Methoden sind Setter-Methoden
+     *
      * @return weißen den Wert des Parameters einer Variable zu
      */
 
@@ -259,6 +262,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     /**
      * CompareTo Methode
      * Effekt: Ermöglicht den Vergleich aller Variablen
+     *
      * @param other
      * @return liefert den Vergleichswert zurück
      */
