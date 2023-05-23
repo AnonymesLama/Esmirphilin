@@ -1,5 +1,15 @@
 import java.util.Date;
 
+
+/**
+ * Klasse Bewerbung
+ * Zweck: Realisiert eine neue Bewerbung
+ *
+ * @author
+ * @version 1
+ * Historie:
+ */
+
 public class Bewerbung implements Comparable<Bewerbung>{
     private int anzahlPersonen;
     private Date einzugszeitpunkt;
@@ -7,7 +17,21 @@ public class Bewerbung implements Comparable<Bewerbung>{
     private Mietobjekt mietobjekt;
     private Bewerber mieter;
 
-    // Konstruktoren
+
+    /**
+     * Bewerbung Konstruktor
+     * Vorbedingung: Es darf vorausgesetzt werden, dass alle nötigen Attribute deklariert sind.
+     * Effekt: Instanziierung einer Bewerbung.
+     *
+     * @param anzahlPersonen   the anzahl personen
+     * @param einzugszeitpunkt the einzugszeitpunkt
+     * @param raucher          the raucher
+     * @param vorstrafen       the vorstrafen
+     * @param referenzen       the referenzen
+     * @param zustimmung       the zustimmung
+     * @param mietobjekt       the mietobjekt
+     * @param mieter           the mieter
+     */
 
     public Bewerbung(int anzahlPersonen, Date einzugszeitpunkt, boolean raucher, boolean vorstrafen, String referenzen, boolean zustimmung, Mietobjekt mietobjekt, Bewerber mieter) {
         this.anzahlPersonen = anzahlPersonen;
@@ -17,23 +41,38 @@ public class Bewerbung implements Comparable<Bewerbung>{
         this.mieter = mieter;
     }
 
-    // Getter-Methoden
+    /**
+     * Alle folgenden Methoden sind Getter-Methoden
+     *
+     * @return geben jeweils den Wert der Variable zurück
+     */
 
     public int getAnzahlPersonen() {
         return anzahlPersonen;
     }
 
+
     public Date getEinzugszeitpunkt() {
         return einzugszeitpunkt;
     }
+
 
     public String getReferenzen() {
         return referenzen;
     }
 
+
     public Mietobjekt getMietobjekt() { return mietobjekt; }
 
+
     public Bewerber getMieter() { return mieter; }
+
+    /**
+     * ToString Fachmethode
+     * Effekt: gibt eine String-Repräsentation der Klasse zurück
+     *
+     * @return String (siehe Effekt)
+     */
 
     @Override
     public String toString() {
@@ -44,6 +83,14 @@ public class Bewerbung implements Comparable<Bewerbung>{
                 '}';
     }
 
+    /**
+     * CompareTo Methode
+     * Effekt: Ermöglicht den Vergleich aller Variablen
+     * 
+     * @param other
+     * @return liefert den Vergleichswert zurück
+     */
+    
     @Override
     public int compareTo(Bewerbung other) {
         int anzahlPersonenComparison = Integer.compare(this.anzahlPersonen, other.anzahlPersonen);
