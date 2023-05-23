@@ -2,6 +2,15 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * Klasse Mietobjekt
+ * Zweck: Realisiert ein mögliches Mietobjekt
+ * @author
+ * @version 1
+ * Historie:
+ */
+
 public class Mietobjekt implements Comparable<Mietobjekt> {
 	private boolean deactivated = false;
     private double kaltmiete;
@@ -26,8 +35,31 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     private double nebenkosten;
     private Vermieter verm;
     private List<Bewerbung> bewerbungen;
-    
-	public Mietobjekt(double kaltmiete, double warmmiete, double raeume, double wohnflaeche, double stockwerke, boolean wgEignung,
+
+    /**
+     * Mietobjekt Konstruktor
+     * Vorbedingung: Es darf vorausgesetzt werden, dass alle nötigen Attribute deklariert sind.
+     * Effekt: Instanziierung eines Mietobjekts und die Berechnung des Preises pro Quadratmeter und der Nebenkosten.
+     *
+     * @param kaltmiete
+     * @param warmmiete
+     * @param raeume
+     * @param wohnflaeche
+     * @param stockwerke
+     * @param wgEignung
+     * @param fruehestesEinzugsdatum
+     * @param keller
+     * @param balkon
+     * @param badfenster
+     * @param kuechenfenster
+     * @param aufzug
+     * @param rollstuhleignung
+     * @param einbaukueche
+     * @param badewanne
+     * @param moebeliert
+     * @param verm
+     */
+    public Mietobjekt(double kaltmiete, double warmmiete, double raeume, double wohnflaeche, double stockwerke, boolean wgEignung,
             Date fruehestesEinzugsdatum, boolean keller, boolean balkon, boolean badfenster, boolean kuechenfenster,
             boolean aufzug, boolean rollstuhleignung, boolean einbaukueche, boolean badewanne, boolean moebeliert, Vermieter verm) {
         this.kaltmiete = kaltmiete;
@@ -54,97 +86,130 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         this.nebenkosten = warmmiete - kaltmiete - (wohnflaeche * qmPreis);
     }
 
-    // Getter-Methoden
+    /**
+     * Alle folgenden Methoden sind Getter-Methoden
+     * @return geben jeweils den Wert der Variable zurück
+     */
+
 	public double getKaltmiete() {
         return kaltmiete;
     }
+
 
     public double getWarmmiete() {
         return warmmiete;
     }
 
+
     public double getRaeume() {
         return raeume;
     }
+
 
     public double getWohnflaeche() {
         return wohnflaeche;
     }
 
+
     public double getStockwerke() {
         return stockwerke;
     }
+
 
     public boolean isWgEignung() {
         return wgEignung;
     }
 
+
     public Date getFruehestesEinzugsdatum() {
         return fruehestesEinzugsdatum;
     }
+
 
     public boolean isKeller() {
         return keller;
     }
 
+
     public boolean isBalkon() {
         return balkon;
     }
+
 
     public boolean isBadfenster() {
         return badfenster;
     }
 
+
     public boolean isKuechenfenster() {
         return kuechenfenster;
     }
 
+
     public boolean isAufzug() {
         return aufzug;
     }
-   
+
+
     public boolean isRollstuhleignung() {
 		return rollstuhleignung;
 	}
-    
+
+
     public boolean isEinbaukueche() {
 		return einbaukueche;
 	}
 
-	public boolean isBadewanne() {
+
+    public boolean isBadewanne() {
 		return badewanne;
 	}
 
-	public boolean isMoebeliert() {return moebeliert; }
 
-	public double getPreisProQuadratmeter() {
+    public boolean isMoebeliert() {return moebeliert; }
+
+
+    public double getPreisProQuadratmeter() {
 		return preisProQuadratmeter;
 	}
 
-	public double getNebenkosten() {
+
+    public double getNebenkosten() {
 		return nebenkosten;
 	}
 
-	public Vermieter getVerm() {
+
+    public Vermieter getVerm() {
 		return verm;
 	}
+
 
     public List<Bewerbung> getBewerbungen() {
         return bewerbungen;
     }
 
-	// Setter-Methoden
+
+    /**
+     * Alle folgenden Methoden sind Setter-Methoden
+     * @return weißen den Wert des Parameters einer Variable zu
+     */
 
     public void setMoebeliert(boolean moebeliert) {
         this.moebeliert = moebeliert;
     }
 
-	public void setVerm(Vermieter verm) {
+
+    public void setVerm(Vermieter verm) {
 			this.verm = verm;
 		}
 
-    // Fachmethoden
 
+    /**
+     * ToString Fachmethode
+     * Effekt: gibt eine String-Repräsentation der Klasse zurück
+     *
+     * @return String (siehe Effekt)
+     */
 
     @Override
     public String toString() {
@@ -173,6 +238,13 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
                 '}';
     }
 
+
+    /**
+     * Vorbedingung: Es darf vorausgesetzt werden, dass die Variable "deactivated" auf false gesetzt ist.
+     * Effekt: Setzt die Variable auf true, sodass das Mietobjekt deaktiviert wird.
+               Außerdem werden alle dazugehörigen Bewerbungen entfernt.
+     */
+
     public void deactivate() {
         // Setze das Attribut "deactivated" auf true, um das Mietobjekt als deaktiviert zu markieren
 	    deactivated = true;
@@ -182,6 +254,14 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 		        bewerbungen.remove(bewerbung);
 		    }
 	}
+
+
+    /**
+     * CompareTo Methode
+     * Effekt: Ermöglicht den Vergleich aller Variablen
+     * @param other
+     * @return liefert den Vergleichswert zurück
+     */
 
     @Override
     public int compareTo(Mietobjekt other) {
