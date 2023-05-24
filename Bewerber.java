@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Klasse Bewerber
  * Zweck: Realisiert eine neue Bewerbung, der von der Klasse Nutzer erbt.
  *
- * @author
+ * @author Phillip Willi Mächold, Linnart Krumbholz
  * @version 1
  * Historie:
  */
