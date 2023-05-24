@@ -1,3 +1,6 @@
 # Esmirphilin
 
-TO DO: In Mietobjekten muss die Liste Bewerbungen auch um Elemente ergänzt werden. Dafür Funktion an Mietobjekten hinzufügen.
+TO DO: 
+Mietobjekte:
+- muss die Liste Bewerbungen auch um Elemente ergänzt werden. Dafür Funktion an Mietobjekten hinzufügen.
+- deactivated muss Getter haben
