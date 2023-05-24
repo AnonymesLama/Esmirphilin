@@ -7,7 +7,7 @@ import java.util.List;
  * Klasse Mietobjekt
  * Zweck: Realisiert ein mögliches Mietobjekt
  *
- * @author
+ * @author Miriam Duscha, Esma Ersan
  * @version 1
  * Historie:
  */
