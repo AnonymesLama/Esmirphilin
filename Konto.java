@@ -3,7 +3,7 @@
  * Klasse Konto
  * Zweck: Abstrakte Klasse, die einen Nutzernamen, ein Passwort und eine E-Mail-Adresse hat.
  * 
- * @author
+ * @author Miriam Duscha, Esma Ersan
  * @version 1
  * Historie:
  */
