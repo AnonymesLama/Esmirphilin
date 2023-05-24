@@ -8,7 +8,7 @@
  * Historie:
  */
 
-abstract class Nutzer extends Konto {
+abstract class Nutzer extends User {
     private String vorname;
     private String nachname;
     private String anrede;

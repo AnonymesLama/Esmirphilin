@@ -7,7 +7,7 @@
  * Historie:
  */
 
-public class Administrator extends Konto {
+public class Administrator extends User {
 
     
     /**

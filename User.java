@@ -8,7 +8,7 @@
  * Historie:
  */
 
-public abstract class Konto {
+public abstract class User {
 	
     private String nutzername;
     private String passwort;
@@ -24,7 +24,7 @@ public abstract class Konto {
      * @param email     
      */
 
-    public Konto(String nutzername, String passwort, String email) {
+    public User(String nutzername, String passwort, String email) {
         this.nutzername = nutzername;
         this.passwort = passwort;
         this.email = email;
