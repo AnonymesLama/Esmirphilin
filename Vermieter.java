@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Klasse Vermieter
  * Zweck: Realisiert einen möglichen Vermieter, der von der Klasse Nutzer erbt.
- * @author
+ * @author Phillip Willi Mächold, Linnart Krumbholz
  * @version 1
  * Historie:
  */
