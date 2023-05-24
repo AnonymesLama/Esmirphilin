@@ -3,7 +3,7 @@
  * Klasse Nutzer
  * Zweck: Abstrakte Klasse, die von Konto erbt
           und zusätzlich die Attribute Vorname, Nachname, Anrede, Telefonnummer und Adresse hat.
- * @author
+ * @author Phillip Willi Mächold, Linnart Krumbholz
  * @version 1
  * Historie:
  */
