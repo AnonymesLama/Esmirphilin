@@ -5,7 +5,7 @@ import java.util.Date;
  * Klasse Bewerbung
  * Zweck: Realisiert eine neue Bewerbung
  *
- * @author
+ * @author Miriam Duscha, Esma Ersan
  * @version 1
  * Historie:
  */
