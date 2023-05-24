@@ -2,7 +2,7 @@
 /**
  * Klasse Administrator
  * Zweck: Realisiert einen Administrator, der von der Klasse Konto erbt.
- * @author
+ * @author Phillip Willi Mächold, Linnart Krumbholz
  * @version 1
  * Historie:
  */
