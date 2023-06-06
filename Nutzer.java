@@ -1,7 +1,7 @@
 
 /**
  * Klasse Nutzer
- * Zweck: Abstrakte Klasse, die von Konto erbt
+ * Zweck: Abstrakte Klasse, die von User erbt
           und zusätzlich die Attribute Vorname, Nachname, Anrede, Telefonnummer und Adresse hat.
  * @author Phillip Willi Mächold, Linnart Krumbholz
  * @version 1
@@ -20,14 +20,14 @@ abstract class Nutzer extends User {
      * Vorbedingung: Es darf vorausgesetzt werden, dass alle nötigen Attribute deklariert sind.
      * Effekt: Instanziierung eines neuen Nutzers.
      *
-     * @param nutzername    the nutzername
-     * @param passwort      the passwort
-     * @param email         the email
-     * @param vorname       the vorname
-     * @param nachname      the nachname
-     * @param anrede        the anrede
-     * @param telefonnummer the telefonnummer
-     * @param adresse       the adresse
+     * @param nutzername
+     * @param passwort
+     * @param email
+     * @param vorname
+     * @param nachname
+     * @param anrede
+     * @param telefonnummer
+     * @param adresse
      */
 
     public Nutzer(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
