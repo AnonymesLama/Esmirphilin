@@ -16,7 +16,6 @@ public class Wohnungswuensche {
     private Date fruehestesEinzugsdatum;
 
     // WUnscheintrag nach Genossenschaft, Unternehmen, etc.????
-
     private List<String> ausstattung;
 
     /* Erlaubte Werte für die Liste:
