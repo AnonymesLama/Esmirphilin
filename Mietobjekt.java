@@ -87,6 +87,20 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         this.nebenkosten = warmmiete - kaltmiete - (wohnflaeche * qmPreis);
     }
 
+    public Mietobjekt(boolean wgEignung, Date fruehestesEinzugsdatum, boolean keller, boolean balkon, boolean badfenster, boolean kuechenfenster, boolean aufzug, boolean rollstuhleignung, boolean einbaukueche, boolean badewanne, boolean moebeliert) {
+        this.wgEignung = wgEignung;
+        this.fruehestesEinzugsdatum = fruehestesEinzugsdatum;
+        this.keller = keller;
+        this.balkon = balkon;
+        this.badfenster = badfenster;
+        this.kuechenfenster = kuechenfenster;
+        this.aufzug = aufzug;
+        this.rollstuhleignung = rollstuhleignung;
+        this.einbaukueche = einbaukueche;
+        this.badewanne = badewanne;
+        this.moebeliert = moebeliert;
+    }
+
     /**
      * Alle folgenden Methoden sind Getter-Methoden
      *
@@ -96,7 +110,6 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 	public double getKaltmiete() {
         return kaltmiete;
     }
-
 
     public double getWarmmiete() {
         return warmmiete;
