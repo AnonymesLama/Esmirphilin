@@ -1,6 +1,6 @@
 
 /**
- * Klasse Konto
+ * Klasse User
  * Zweck: Abstrakte Klasse, die einen Nutzernamen, ein Passwort und eine E-Mail-Adresse hat.
  * 
  * @author Miriam Duscha, Esma Ersan
@@ -9,7 +9,7 @@
  */
 
 public abstract class User {
-	
+
     private String nutzername;
     private String passwort;
     private String email;
@@ -36,9 +36,7 @@ public abstract class User {
      * @return geben jeweils den Wert der Variable zurück
      */
     
-    public String getNutzername() {
-        return nutzername;
-    }
+    public String getNutzername() { return nutzername; }
     
     
     public String getPasswort() {
@@ -51,12 +49,15 @@ public abstract class User {
     }
 
     /**
-     * Die folgende Methode ist eine Setter-Methode
+     * Die folgende Methode ist eine Setter-Methode. Wird kein Passwort eingegeben, wird eine IllegalArgumentException zurückgegeben.
      *
      * @return weißen den Wert des Parameters einer Variable zu
      */
-    
+
     public void setPasswort(String passwort) {
+        if (passwort == null || passwort.isEmpty()) {
+            throw new IllegalArgumentException("Passwort darf nicht null oder leer sein.");
+        }
         this.passwort = passwort;
     }
 
@@ -74,5 +75,24 @@ public abstract class User {
                 ", passwort='" + passwort + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    /**
+     * equals Fachmethode
+     * Effekt: vergleicht zwei Objekte miteinander
+     *
+     * @return String (siehe Effekt)
+     */
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        User user = (User) obj;
+        return nutzername.equals(user.nutzername);
     }
 }

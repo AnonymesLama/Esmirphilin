@@ -32,6 +32,33 @@ abstract class Nutzer extends User {
 
     public Nutzer(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
         super(nutzername, passwort, email);
+
+        //Exception Handling: keine leeren Attribute
+        if (nutzername == null || nutzername.isEmpty()) {
+            throw new IllegalArgumentException("Nutzername darf nicht null oder leer sein.");
+        }
+        if (passwort == null || passwort.isEmpty()) {
+            throw new IllegalArgumentException("Passwort darf nicht null oder leer sein.");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("E-Mail darf nicht null oder leer sein.");
+        }
+        if (vorname == null || vorname.isEmpty()) {
+            throw new IllegalArgumentException("Vorname darf nicht null oder leer sein.");
+        }
+        if (nachname == null || nachname.isEmpty()) {
+            throw new IllegalArgumentException("Nachname darf nicht null oder leer sein.");
+        }
+        if (anrede == null || anrede.isEmpty()) {
+            throw new IllegalArgumentException("Anrede darf nicht null oder leer sein.");
+        }
+        if (telefonnummer == null || telefonnummer.isEmpty()) {
+            throw new IllegalArgumentException("Telefonnummer darf nicht null oder leer sein.");
+        }
+        if (adresse == null || adresse.isEmpty()) {
+            throw new IllegalArgumentException("Adresse darf nicht null oder leer sein.");
+        }
+
         this.vorname = vorname;
         this.nachname = nachname;
         this.anrede = anrede;
