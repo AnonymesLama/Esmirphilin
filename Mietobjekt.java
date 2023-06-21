@@ -140,27 +140,27 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     }
 
 
-    public boolean isKeller() {
+    public boolean hasKeller() {
         return keller;
     }
 
 
-    public boolean isBalkon() {
+    public boolean hasBalkon() {
         return balkon;
     }
 
 
-    public boolean isBadfenster() {
+    public boolean hasBadfenster() {
         return badfenster;
     }
 
 
-    public boolean isKuechenfenster() {
+    public boolean hasKuechenfenster() {
         return kuechenfenster;
     }
 
 
-    public boolean isAufzug() {
+    public boolean hasAufzug() {
         return aufzug;
     }
 
@@ -170,17 +170,19 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 	}
 
 
-    public boolean isEinbaukueche() {
+    public boolean hasEinbaukueche() {
 		return einbaukueche;
 	}
 
 
-    public boolean isBadewanne() {
+    public boolean hasBadewanne() {
 		return badewanne;
 	}
 
 
-    public boolean isMoebeliert() {return moebeliert; }
+    public boolean isMoebeliert() {
+	    return moebeliert;
+	}
 
 
     public double getPreisProQuadratmeter() {
@@ -216,8 +218,7 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
     public void setVerm(Vermieter verm) {
 			this.verm = verm;
-		}
-
+    }
 
     /**
      * ToString Fachmethode
@@ -228,29 +229,28 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
     @Override
     public String toString() {
-        return "Mietobjekt{" +
-                "deactivated=" + deactivated +
-                ", kaltmiete=" + kaltmiete +
-                ", warmmiete=" + warmmiete +
-                ", raeume=" + raeume +
-                ", wohnflaeche=" + wohnflaeche +
-                ", stockwerke=" + stockwerke +
-                ", wgEignung=" + wgEignung +
-                ", fruehestesEinzugsdatum=" + fruehestesEinzugsdatum +
-                ", keller=" + keller +
-                ", balkon=" + balkon +
-                ", badfenster=" + badfenster +
-                ", kuechenfenster=" + kuechenfenster +
-                ", aufzug=" + aufzug +
-                ", rollstuhleignung=" + rollstuhleignung +
-                ", einbaukueche=" + einbaukueche +
-                ", badewanne=" + badewanne +
-                ", moebeliert=" + moebeliert +
-                ", preisProQuadratmeter=" + preisProQuadratmeter +
-                ", nebenkosten=" + nebenkosten +
-                ", verm=" + verm +
-                ", bewerbungen=" + bewerbungen +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Mietobjekt\n");
+        sb.append("Kaltmiete: ").append(getKaltmiete()).append("\n");
+        sb.append("Warmmiete: ").append(getWarmmiete()).append("\n");
+        sb.append("Räume: ").append(getRaeume()).append("\n");
+        sb.append("Wohnfläche: ").append(getWohnflaeche()).append("\n");
+        sb.append("Stockwerke: ").append(getStockwerke()).append("\n");
+        sb.append("WG-Eignung: ").append(isWgEignung()).append("\n");
+        sb.append("Frühestes Einzugsdatum: ").append(getFruehestesEinzugsdatum()).append("\n");
+        sb.append("Keller: ").append(hasKeller()).append("\n");
+        sb.append("Balkon: ").append(hasBalkon()).append("\n");
+        sb.append("Badfenster: ").append(hasBadfenster()).append("\n");
+        sb.append("Küchenfenster: ").append(hasKuechenfenster()).append("\n");
+        sb.append("Aufzug: ").append(hasAufzug()).append("\n");
+        sb.append("Rollstuhleignung: ").append(isRollstuhleignung()).append("\n");
+        sb.append("Einbauküche: ").append(hasEinbaukueche()).append("\n");
+        sb.append("Badewanne: ").append(hasBadewanne()).append("\n");
+        sb.append("Möbliert: ").append(isMoebeliert()).append("\n");
+        sb.append("Vermieter: ").append(getVerm()).append("\n");
+        sb.append("\n");
+
+        return sb.toString();
     }
 
 

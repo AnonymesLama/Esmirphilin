@@ -76,11 +76,12 @@ public class Bewerbung implements Comparable<Bewerbung>{
 
     @Override
     public String toString() {
-        return "Bewerbung{" +
-                "anzahlPersonen=" + anzahlPersonen +
-                ", einzugszeitpunkt=" + einzugszeitpunkt +
-                ", referenzen='" + referenzen + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Bewerbung:\n");
+        sb.append("Anzahl Personen: ").append(anzahlPersonen).append("\n");
+        sb.append("Einzugszeitpunkt: ").append(einzugszeitpunkt).append("\n");
+        sb.append("Referenzen: ").append(referenzen).append("\n");
+        return sb.toString();
     }
 
     /**

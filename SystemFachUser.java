@@ -8,7 +8,7 @@
  * Historie:
  */
 
-abstract class SystemFachUser extends FachUser {
+abstract class Nutzer extends User {
     private String vorname;
     private String nachname;
     private String anrede;
@@ -30,7 +30,7 @@ abstract class SystemFachUser extends FachUser {
      * @param adresse
      */
 
-    public SystemFachUser(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
+    public Nutzer(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
         super(nutzername, passwort, email);
 
         //Exception Handling: keine leeren Attribute

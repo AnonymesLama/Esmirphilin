@@ -46,7 +46,6 @@ public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
         return mietobjekte;
     }
 
-
     public boolean isFreigegeben() { return freigegeben; }
 
     /**
@@ -56,11 +55,7 @@ public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
      */
     public void freigeben() { this.freigegeben = true; }
 
-
     public void sperren() { this.freigegeben = false; }
-
-
-
 
     /**
      * Mietobjekt Konstruktor
@@ -90,7 +85,6 @@ public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
         mietobjekte.add(mietobjekt);
     }
 
-
     /**
      * DeaktiviereMietobjekt Konstruktor
      * Effekt: Deaktiviert einen Mietobjekt.
@@ -103,7 +97,6 @@ public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
         mietobjekte.remove(mietobjekt); // Entferne das Mietobjekt aus der Liste der Vermieter-Mietobjekte
     }
 
-
     /**
      * ToString Fachmethode
      * Effekt: gibt eine String-Repräsentation der Klasse zurück
@@ -113,10 +106,11 @@ public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
 
     @Override
     public String toString() {
-        return super.toString() + "Vermieter{" +
-                "mietobjekte=" + mietobjekte +
-                "freigegeben=" + freigegeben +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vermieter:\n");
+        sb.append("Mietobjekte: ").append(mietobjekte).append("\n");
+        sb.append("Freigegeben: ").append(freigegeben).append("\n");
+        return sb.toString();
     }
 
     /**
@@ -132,7 +126,6 @@ public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
         return verm1.compareTo(verm);
     }
 
-    
     /**
      * CompareTo Methode
      * Effekt: Ermöglicht den Vergleich aller Variablen

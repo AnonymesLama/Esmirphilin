@@ -63,14 +63,17 @@ public class Bewerber extends SystemFachUser implements Comparable<Bewerber> {
      *
      * @return String (siehe Effekt)
      */
-    
+
     @Override
     public String toString() {
-        return super.toString() + "Bewerber{" +
-                "haustiere=" + haustiere +
-                ", raucher=" + raucher +
-                ", vorstrafen=" + vorstrafen +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString()).append("\n");
+        sb.append("Bewerber: \n");
+        sb.append("  Haustiere: ").append(haustiere).append("\n");
+        sb.append("  Raucher: ").append(raucher).append("\n");
+        sb.append("  Vorstrafen: ").append(vorstrafen).append("\n");
+        sb.append(super.toString());
+        return sb.toString();
     }
 
     /**
