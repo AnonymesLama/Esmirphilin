@@ -8,6 +8,7 @@
  * Historie:
  */
 
+//SYSTEMNUTZER, nicht abstrakte werden BASISNUTZER (Unterschied zwischen Nutzer und User spezuifieziern)
 abstract class Nutzer extends User {
     private String vorname;
     private String nachname;
@@ -135,12 +136,14 @@ abstract class Nutzer extends User {
 
     @Override
     public String toString() {
-        return "Nutzer{" +
-                "vorname='" + vorname + '\'' +
-                ", nachname='" + nachname + '\'' +
-                ", anrede='" + anrede + '\'' +
-                ", telefonnummer='" + telefonnummer + '\'' +
-                ", adresse='" + adresse + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nutzer:\n");
+        sb.append("Vorname: ").append(vorname).append("\n");
+        sb.append("Nachname: ").append(nachname).append("\n");
+        sb.append("Anrede: ").append(anrede).append("\n");
+        sb.append("Telefonnummer: ").append(telefonnummer).append("\n");
+        sb.append("Adresse: ").append(adresse).append("\n");
+        sb.append(super.toString());
+        return sb.toString();
     }
 }

@@ -67,14 +67,16 @@ public abstract class User {
      *
      * @return String (siehe Effekt)
      */
-    
+
     @Override
     public String toString() {
-        return "Konto{" +
-                "nutzername='" + nutzername + '\'' +
-                ", passwort='" + passwort + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Konto: \n");
+        sb.append("Nutzername: ").append(nutzername).append("\n");
+        sb.append("Passwort: ").append(passwort).append("\n");
+        sb.append("E-Mail: 8").append(email).append("\n");
+        sb.append(super.toString());
+        return sb.toString();
     }
 
     /**
