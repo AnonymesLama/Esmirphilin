@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
  * Historie:
  */
 
-public class Vermieter extends Nutzer implements Comparable<Vermieter>{
+public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
     private List<Mietobjekt> mietobjekte;
     private boolean freigegeben = false;
 

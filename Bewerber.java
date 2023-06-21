@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-
-
 /**
  * Klasse Bewerber
  * Zweck: Realisiert eine neue Bewerbung, der von der Klasse Nutzer erbt.
@@ -10,7 +7,7 @@ import java.util.ArrayList;
  * Historie:
  */
 
-public class Bewerber extends Nutzer implements Comparable<Bewerber> {
+public class Bewerber extends SystemFachUser implements Comparable<Bewerber> {
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;

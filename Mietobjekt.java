@@ -100,7 +100,6 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         this.badewanne = badewanne;
         this.moebeliert = moebeliert;
     }
-
     /**
      * Alle folgenden Methoden sind Getter-Methoden
      *
