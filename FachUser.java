@@ -8,7 +8,7 @@
  * Historie:
  */
 
-public abstract class User {
+public abstract class FachUser {
 
     private String nutzername;
     private String passwort;
@@ -24,7 +24,7 @@ public abstract class User {
      * @param email     
      */
 
-    public User(String nutzername, String passwort, String email) {
+    public FachUser(String nutzername, String passwort, String email) {
         this.nutzername = nutzername;
         this.passwort = passwort;
         this.email = email;
@@ -92,7 +92,7 @@ public abstract class User {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        User user = (User) obj;
+        FachUser user = (FachUser) obj;
         return nutzername.equals(user.nutzername);
     }
 }

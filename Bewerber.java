@@ -7,7 +7,7 @@
  * Historie:
  */
 
-public class Bewerber extends SystemFachUser implements Comparable<Bewerber> {
+public class Bewerber extends SystemUser implements Comparable<Bewerber> {
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
