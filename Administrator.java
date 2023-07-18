@@ -42,4 +42,6 @@ public class Administrator extends FachUser {
     public void sperren(Vermieter vermieter) {
         vermieter.sperren();
     }
+
+    //compareTo
 }

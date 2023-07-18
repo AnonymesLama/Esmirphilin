@@ -96,5 +96,8 @@ public class Filter {
         
         return filteredList;
     }
+
+    //TO DO: ToString
+    //TO DO: compareTo
 }
 

@@ -5,7 +5,8 @@ import java.util.List;
 
 /**
  * Klasse Mietobjekt
- * Zweck: Realisiert ein mögliches Mietobjekt
+ * Zweck: Realisiert ein mögliches Mietobj
+ * ekt
  *
  * @author Miriam Duscha, Esma Ersan
  * @version 1

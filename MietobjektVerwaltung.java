@@ -108,4 +108,6 @@ public class MietobjektVerwaltung {
         return sb.toString();
     }
 
+    //TO DO: Hier compareTo()
+
 }
