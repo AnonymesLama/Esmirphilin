@@ -15,7 +15,7 @@ public class Bewerbung implements Comparable<Bewerbung>{
     private Date einzugszeitpunkt;
     private String referenzen;
     private Mietobjekt mietobjekt;
-    private Bewerber mieter;
+    private Mieter mieter;
 
 
     /**
@@ -33,7 +33,7 @@ public class Bewerbung implements Comparable<Bewerbung>{
      * @param mieter           the mieter
      */
 
-    public Bewerbung(int anzahlPersonen, Date einzugszeitpunkt, boolean raucher, boolean vorstrafen, String referenzen, boolean zustimmung, Mietobjekt mietobjekt, Bewerber mieter) {
+    public Bewerbung(int anzahlPersonen, Date einzugszeitpunkt, boolean raucher, boolean vorstrafen, String referenzen, boolean zustimmung, Mietobjekt mietobjekt, Mieter mieter) {
         this.anzahlPersonen = anzahlPersonen;
         this.einzugszeitpunkt = einzugszeitpunkt;
         this.referenzen = referenzen;
@@ -65,7 +65,7 @@ public class Bewerbung implements Comparable<Bewerbung>{
     public Mietobjekt getMietobjekt() { return mietobjekt; }
 
 
-    public Bewerber getMieter() { return mieter; }
+    public Mieter getMieter() { return mieter; }
 
     /**
      * ToString Fachmethode

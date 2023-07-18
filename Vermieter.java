@@ -11,7 +11,7 @@ import java.util.List;
  * Historie:
  */
 
-public class Vermieter extends SystemFachUser implements Comparable<Vermieter>{
+public class Vermieter extends Person implements Comparable<Vermieter>{
     private List<Mietobjekt> mietobjekte;
     private boolean freigegeben = false;
 

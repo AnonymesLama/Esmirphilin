@@ -1,14 +1,18 @@
 
 /**
- * Klasse Nutzer
- * Zweck: Abstrakte Klasse, die von User erbt
-          und zusätzlich die Attribute Vorname, Nachname, Anrede, Telefonnummer und Adresse hat.
- * @author Phillip Willi Mächold, Linnart Krumbholz
+ * Klasse User
+ * Zweck: Abstrakte Klasse, die Nutzerdaten speichert.
+ * 
+ * @author Miriam Duscha, Esma Ersan
  * @version 1
  * Historie:
  */
 
-abstract class SystemUser extends FachUser {
+public abstract class Person {
+
+    private String nutzername;
+    private String passwort;
+    private String email;
     private String vorname;
     private String nachname;
     private String anrede;
@@ -16,23 +20,16 @@ abstract class SystemUser extends FachUser {
     private String adresse;
 
     /**
-     * Nutzer Konstruktor
+     * Konto Konstruktor
      * Vorbedingung: Es darf vorausgesetzt werden, dass alle nötigen Attribute deklariert sind.
-     * Effekt: Instanziierung eines neuen Nutzers.
-     *
+     * Effekt: Instanziierung eines neuen Kontos (Users).
+     * 
      * @param nutzername
-     * @param passwort
-     * @param email
-     * @param vorname
-     * @param nachname
-     * @param anrede
-     * @param telefonnummer
-     * @param adresse
+     * @param passwort  
+     * @param email     
      */
 
-    public SystemUser(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
-        super(nutzername, passwort, email);
-
+    public Person(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
         //Exception Handling: keine leeren Attribute
         if (nutzername == null || nutzername.isEmpty()) {
             throw new IllegalArgumentException("Nutzername darf nicht null oder leer sein.");
@@ -59,19 +56,35 @@ abstract class SystemUser extends FachUser {
             throw new IllegalArgumentException("Adresse darf nicht null oder leer sein.");
         }
 
+        this.nutzername = nutzername;
+        this.passwort = passwort;
+        this.email = email;
         this.vorname = vorname;
         this.nachname = nachname;
         this.anrede = anrede;
         this.telefonnummer = telefonnummer;
         this.adresse = adresse;
-    }
 
+    }
 
     /**
      * Alle folgenden Methoden sind Getter-Methoden
      *
      * @return geben jeweils den Wert der Variable zurück
      */
+    
+    public String getNutzername() { return nutzername; }
+    
+    
+    public String getPasswort() {
+        return passwort;
+    }
+
+    
+    public String getEmail() {
+        return email;
+    }
+
 
     public String getVorname() {
         return vorname;
@@ -98,10 +111,17 @@ abstract class SystemUser extends FachUser {
     }
 
     /**
-     * Alle folgenden Methoden sind Setter-Methoden
+     * Die folgende Methode ist eine Setter-Methode. Wird kein Passwort eingegeben, wird eine IllegalArgumentException zurückgegeben.
      *
      * @return weißen den Wert des Parameters einer Variable zu
      */
+
+    public void setPasswort(String passwort) {
+        if (passwort == null || passwort.isEmpty()) {
+            throw new IllegalArgumentException("Passwort darf nicht null oder leer sein.");
+        }
+        this.passwort = passwort;
+    }
 
     public void setVorname(String vorname) {
         this.vorname = vorname;
@@ -111,6 +131,8 @@ abstract class SystemUser extends FachUser {
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
+    // NUR DEN ADMINISTRATOR NACHNAMEN ÄNDERN LASSEN
+
 
     public void setAnrede(String anrede) {
         this.anrede = anrede;
@@ -132,15 +154,37 @@ abstract class SystemUser extends FachUser {
      *
      * @return String (siehe Effekt)
      */
-
+    
     @Override
     public String toString() {
-        return "Nutzer{" +
+        return "Konto{" +
+                "nutzername='" + nutzername + '\'' +
+                ", passwort='" + passwort + '\'' +
+                ", email='" + email + '\'' +
                 "vorname='" + vorname + '\'' +
                 ", nachname='" + nachname + '\'' +
                 ", anrede='" + anrede + '\'' +
                 ", telefonnummer='" + telefonnummer + '\'' +
                 ", adresse='" + adresse + '\'' +
                 '}';
+    }
+
+    /**
+     * equals Fachmethode
+     * Effekt: vergleicht zwei Objekte miteinander
+     *
+     * @return String (siehe Effekt)
+     */
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Person user = (Person) obj;
+        return nutzername.equals(user.nutzername);
     }
 }

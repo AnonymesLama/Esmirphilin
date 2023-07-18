@@ -7,7 +7,7 @@
  * Historie:
  */
 
-public class Administrator extends FachUser {
+public class Administrator extends Person {
 
     
     /**

@@ -7,7 +7,7 @@
  * Historie:
  */
 
-public class Bewerber extends SystemUser implements Comparable<Bewerber> {
+public class Mieter extends Person implements Comparable<Mieter> {
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
@@ -30,7 +30,7 @@ public class Bewerber extends SystemUser implements Comparable<Bewerber> {
      * @param vorstrafen    the vorstrafen
      */
     
-    public Bewerber(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse, int haustiere, boolean raucher, boolean vorstrafen) {
+    public Mieter(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse, int haustiere, boolean raucher, boolean vorstrafen) {
         super(nutzername, passwort, email, vorname, nachname, anrede, telefonnummer, adresse);
         this.haustiere = haustiere;
         this.raucher = raucher;
@@ -85,7 +85,7 @@ public class Bewerber extends SystemUser implements Comparable<Bewerber> {
      */
     
     @Override
-    public int compareTo(Bewerber other) {
+    public int compareTo(Mieter other) {
         int nutzernameComparison = this.getNutzername().compareTo(other.getNutzername());
         if (nutzernameComparison != 0) {
             return nutzernameComparison;
