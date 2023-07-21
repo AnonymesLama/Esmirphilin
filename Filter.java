@@ -6,7 +6,7 @@ import java.util.List;
  * Klasse Filter
  * Zweck: Eine eingehende Liste von Mietobjekten wird nach angegebenen Kriterien gefiltert und mit den gewünschten Ergebnissen zurückgegeben
  *
- * @author Linnart Krumbholz, Phillip Willi Mächold
+ * @author Esma Ersan, Miriam Duscha
  * @version 1
  * Historie:
  */
