@@ -3,7 +3,7 @@
  * Klasse User
  * Zweck: Abstrakte Klasse, die Nutzerdaten speichert.
  * 
- * @author Miriam Duscha, Esma Ersan
+ * @author Phillip Willi Mächold, Linnart Krumbholz
  * @version 1
  * Historie:
  */
