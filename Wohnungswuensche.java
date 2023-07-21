@@ -1,6 +1,14 @@
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Klasse Wohnungswuensche
+ * Zweck: Realisiert die Wohnungswuensche der Mieter.
+ * @author Miriam Duscha, Esma Ersan
+ * @version 1
+ * Historie:
+ */
+
 public class Wohnungswuensche {
 
     private double kaltmieteMaximum;
