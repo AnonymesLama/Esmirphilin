@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -20,18 +21,9 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     private double raeume;
     private double wohnflaeche;
     private double stockwerke;
-    private boolean wgEignung;
     private Date fruehestesEinzugsdatum;
     //Wohnungsausstattung
-    private boolean keller;
-    private boolean balkon;
-    private boolean badfenster;
-    private boolean kuechenfenster;
-    private boolean aufzug;
-    private boolean rollstuhleignung;
-	private boolean einbaukueche;
-	private boolean badewanne;
-	private boolean moebeliert;
+    private HashMap<String, Boolean> ausstattung = new HashMap<String, Boolean>();
 	//berechneten Werte
     private double preisProQuadratmeter;
     private double nebenkosten;
@@ -69,17 +61,17 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         this.raeume = raeume;
         this.wohnflaeche = wohnflaeche;
         this.stockwerke = stockwerke;
-        this.wgEignung = wgEignung;
         this.fruehestesEinzugsdatum = fruehestesEinzugsdatum;
-        this.keller = keller;
-        this.balkon = balkon;
-        this.badfenster = badfenster;
-        this.kuechenfenster = kuechenfenster;
-        this.aufzug = aufzug;
-        this.rollstuhleignung = rollstuhleignung;
-        this.einbaukueche = einbaukueche;
-        this.badewanne = badewanne;
-        this.moebeliert = moebeliert;
+        ausstattung.put("wgEignung", wgEignung);
+        ausstattung.put("aufzug", aufzug);
+        ausstattung.put("keller", keller);
+        ausstattung.put("balkon", balkon);
+        ausstattung.put("badfenster", badfenster);
+        ausstattung.put("kuechenfenster", kuechenfenster);
+        ausstattung.put("rollstuhleignung", rollstuhleignung);
+        ausstattung.put("einbaukueche", einbaukueche);
+        ausstattung.put("badewanne", badewanne);
+        ausstattung.put("moebeliert", moebeliert);
         this.verm = verm;
         
         // Berechnung des Preises pro Quadratmeter und der Nebenkosten
@@ -88,19 +80,6 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         this.nebenkosten = warmmiete - kaltmiete - (wohnflaeche * qmPreis);
     }
 
-    public Mietobjekt(boolean wgEignung, Date fruehestesEinzugsdatum, boolean keller, boolean balkon, boolean badfenster, boolean kuechenfenster, boolean aufzug, boolean rollstuhleignung, boolean einbaukueche, boolean badewanne, boolean moebeliert) {
-        this.wgEignung = wgEignung;
-        this.fruehestesEinzugsdatum = fruehestesEinzugsdatum;
-        this.keller = keller;
-        this.balkon = balkon;
-        this.badfenster = badfenster;
-        this.kuechenfenster = kuechenfenster;
-        this.aufzug = aufzug;
-        this.rollstuhleignung = rollstuhleignung;
-        this.einbaukueche = einbaukueche;
-        this.badewanne = badewanne;
-        this.moebeliert = moebeliert;
-    }
     /**
      * Alle folgenden Methoden sind Getter-Methoden
      *
@@ -131,60 +110,14 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     }
 
 
-    public boolean isWgEignung() {
-        return wgEignung;
-    }
-
 
     public Date getFruehestesEinzugsdatum() {
         return fruehestesEinzugsdatum;
     }
 
-
-    public boolean hasKeller() {
-        return keller;
+    public HashMap<String, Boolean> getAusstattung() {
+        return ausstattung;
     }
-
-
-    public boolean hasBalkon() {
-        return balkon;
-    }
-
-
-    public boolean hasBadfenster() {
-        return badfenster;
-    }
-
-
-    public boolean hasKuechenfenster() {
-        return kuechenfenster;
-    }
-
-
-    public boolean hasAufzug() {
-        return aufzug;
-    }
-
-
-    public boolean isRollstuhleignung() {
-		return rollstuhleignung;
-	}
-
-
-    public boolean hasEinbaukueche() {
-		return einbaukueche;
-	}
-
-
-    public boolean hasBadewanne() {
-		return badewanne;
-	}
-
-
-    public boolean isMoebeliert() {
-	    return moebeliert;
-	}
-
 
     public double getPreisProQuadratmeter() {
 		return preisProQuadratmeter;
@@ -205,17 +138,15 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         return bewerbungen;
     }
 
-
     /**
      * Alle folgenden Methoden sind Setter-Methoden
      *
      * @return weißen den Wert des Parameters einer Variable zu
      */
 
-    public void setMoebeliert(boolean moebeliert) {
-        this.moebeliert = moebeliert;
+    public void setAusstattung(String key, Boolean value ) {
+        ausstattung.replace(key, value);
     }
-
 
     public void setVerm(Vermieter verm) {
 			this.verm = verm;
@@ -232,28 +163,27 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Mietobjekt\n");
-        sb.append("Kaltmiete: ").append(getKaltmiete()).append("\n");
-        sb.append("Warmmiete: ").append(getWarmmiete()).append("\n");
-        sb.append("Räume: ").append(getRaeume()).append("\n");
-        sb.append("Wohnfläche: ").append(getWohnflaeche()).append("\n");
-        sb.append("Stockwerke: ").append(getStockwerke()).append("\n");
-        sb.append("WG-Eignung: ").append(isWgEignung()).append("\n");
-        sb.append("Frühestes Einzugsdatum: ").append(getFruehestesEinzugsdatum()).append("\n");
-        sb.append("Keller: ").append(hasKeller()).append("\n");
-        sb.append("Balkon: ").append(hasBalkon()).append("\n");
-        sb.append("Badfenster: ").append(hasBadfenster()).append("\n");
-        sb.append("Küchenfenster: ").append(hasKuechenfenster()).append("\n");
-        sb.append("Aufzug: ").append(hasAufzug()).append("\n");
-        sb.append("Rollstuhleignung: ").append(isRollstuhleignung()).append("\n");
-        sb.append("Einbauküche: ").append(hasEinbaukueche()).append("\n");
-        sb.append("Badewanne: ").append(hasBadewanne()).append("\n");
-        sb.append("Möbliert: ").append(isMoebeliert()).append("\n");
-        sb.append("Vermieter: ").append(getVerm()).append("\n");
+        sb.append("Kaltmiete: ").append(kaltmiete).append(" €\n");
+        sb.append("Warmmiete: ").append(warmmiete).append(" €\n");
+        sb.append("Räume: ").append(raeume).append("\n");
+        sb.append("Wohnfläche: ").append(wohnflaeche).append(" m²\n");
+        sb.append("Stockwerke: ").append(stockwerke).append("\n");
+        sb.append("Frühestes Einzugsdatum: ").append(fruehestesEinzugsdatum).append("\n");
+        sb.append("WG-Eignung: ").append(ausstattung.getOrDefault("wgEignung", false)).append("\n");
+        sb.append("Keller: ").append(ausstattung.getOrDefault("keller", false)).append("\n");
+        sb.append("Balkon: ").append(ausstattung.getOrDefault("balkon", false)).append("\n");
+        sb.append("Badfenster: ").append(ausstattung.getOrDefault("badfenster", false)).append("\n");
+        sb.append("Küchenfenster: ").append(ausstattung.getOrDefault("kuechenfenster", false)).append("\n");
+        sb.append("Aufzug: ").append(ausstattung.getOrDefault("aufzug", false)).append("\n");
+        sb.append("Rollstuhleignung: ").append(ausstattung.getOrDefault("rollstuhleignung", false)).append("\n");
+        sb.append("Einbauküche: ").append(ausstattung.getOrDefault("einbaukueche", false)).append("\n");
+        sb.append("Badewanne: ").append(ausstattung.getOrDefault("badewanne", false)).append("\n");
+        sb.append("Möbliert: ").append(ausstattung.getOrDefault("moebeliert", false)).append("\n");
+        sb.append("Vermieter: ").append(verm.getVorname()).append(" ").append(verm.getNachname()).append("\n");
         sb.append("\n");
 
         return sb.toString();
     }
-
 
     /**
      * Vorbedingung: Es darf vorausgesetzt werden, dass die Variable "deactivated" auf false gesetzt ist.
@@ -269,12 +199,15 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 		    for (Bewerbung bewerbung : bewerbungen) {
 		        bewerbungen.remove(bewerbung);
 		    }
+
+		    //HIER: Einfügen: Aus der Bewerbungen Collections ebenfalls entfernen -> muss die noch schreiben
 	}
 
-
     /**
-     * CompareTo Methode
-     * Effekt: Ermöglicht den Vergleich aller Variablen
+     * Compare Methoden
+     * Effekt: Ermöglicht den Vergleich zwischen einem Attribut verschiedener Objekte der Klasse; ermöglicht eine Sortierung anhand dieser Attribute
+     * CompareTo: Standard-Vergleich anhand der Wohnfläche
+     * compare<Attribut>: Vergleich anhang des Attributs
      *
      * @param other
      * @return liefert den Vergleichswert zurück
@@ -282,101 +215,66 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
     @Override
     public int compareTo(Mietobjekt other) {
-        int deactivatedComparison = Boolean.compare(this.deactivated, other.deactivated);
-        if (deactivatedComparison != 0) {
-            return deactivatedComparison;
-        }
-
-        int kaltmieteComparison = Double.compare(this.kaltmiete, other.kaltmiete);
-        if (kaltmieteComparison != 0) {
-            return kaltmieteComparison;
-        }
-
-        int warmmieteComparison = Double.compare(this.warmmiete, other.warmmiete);
-        if (warmmieteComparison != 0) {
-            return warmmieteComparison;
-        }
-
-        int raeumeComparison = Double.compare(this.raeume, other.raeume);
-        if (raeumeComparison != 0) {
-            return raeumeComparison;
-        }
-
         int wohnflaecheComparison = Double.compare(this.wohnflaeche, other.wohnflaeche);
         if (wohnflaecheComparison != 0) {
             return wohnflaecheComparison;
         }
+        return 0;
+    }
 
+    public int compareKaltmiete(Mietobjekt other) {
+        int kaltmieteComparison = Double.compare(this.kaltmiete, other.kaltmiete);
+        if (kaltmieteComparison != 0) {
+            return kaltmieteComparison;
+        }
+        return 0;
+    }
+
+    public int compareWarmmiete(Mietobjekt other) {
+        int warmmieteComparison = Double.compare(this.warmmiete, other.warmmiete);
+        if (warmmieteComparison != 0) {
+            return warmmieteComparison;
+        }
+        return 0;
+    }
+
+    public int compareRaeume(Mietobjekt other) {
+        int raeumeComparison = Double.compare(this.raeume, other.raeume);
+        if (raeumeComparison != 0) {
+            return raeumeComparison;
+        }
+        return 0;
+    }
+
+    public int compareStockwerke(Mietobjekt other) {
         int stockwerkeComparison = Double.compare(this.stockwerke, other.stockwerke);
         if (stockwerkeComparison != 0) {
             return stockwerkeComparison;
         }
+        return 0;
+    }
 
-        int wgEignungComparison = Boolean.compare(this.wgEignung, other.wgEignung);
-        if (wgEignungComparison != 0) {
-            return wgEignungComparison;
-        }
-
+    public int compareEinzugsdatum(Mietobjekt other) {
         int dateComparison = this.fruehestesEinzugsdatum.compareTo(other.fruehestesEinzugsdatum);
         if (dateComparison != 0) {
             return dateComparison;
         }
+        return 0;
+    }
 
-        int kellerComparison = Boolean.compare(this.keller, other.keller);
-        if (kellerComparison != 0) {
-            return kellerComparison;
-        }
-
-        int balkonComparison = Boolean.compare(this.balkon, other.balkon);
-        if (balkonComparison != 0) {
-            return balkonComparison;
-        }
-
-        int badfensterComparison = Boolean.compare(this.badfenster, other.badfenster);
-        if (badfensterComparison != 0) {
-            return badfensterComparison;
-        }
-
-        int kuechenfensterComparison = Boolean.compare(this.kuechenfenster, other.kuechenfenster);
-        if (kuechenfensterComparison != 0) {
-            return kuechenfensterComparison;
-        }
-
-        int aufzugComparison = Boolean.compare(this.aufzug, other.aufzug);
-        if (aufzugComparison != 0) {
-            return aufzugComparison;
-        }
-
-        int rollstuhleignungComparison = Boolean.compare(this.rollstuhleignung, other.rollstuhleignung);
-        if (rollstuhleignungComparison != 0) {
-            return rollstuhleignungComparison;
-        }
-
-        int einbaukuecheComparison = Boolean.compare(this.einbaukueche, other.einbaukueche);
-        if (einbaukuecheComparison != 0) {
-            return einbaukuecheComparison;
-        }
-
-        int badewanneComparison = Boolean.compare(this.badewanne, other.badewanne);
-        if (badewanneComparison != 0) {
-            return badewanneComparison;
-        }
-
+    public int compareQMPreis(Mietobjekt other) {
         int preisProQuadratmeterComparison = Double.compare(this.preisProQuadratmeter, other.preisProQuadratmeter);
         if (preisProQuadratmeterComparison != 0) {
             return preisProQuadratmeterComparison;
         }
+        return 0;
+    }
 
+    public int compareNebenkosten(Mietobjekt other) {
         int nebenkostenComparison = Double.compare(this.nebenkosten, other.nebenkosten);
         if (nebenkostenComparison != 0) {
             return nebenkostenComparison;
         }
-
-        int vermComparison = Vermieter.compare(this.verm, other.verm);
-        if (vermComparison != 0) {
-            return vermComparison;
-        }
-
         return 0;
     }
 }

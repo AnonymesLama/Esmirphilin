@@ -154,19 +154,18 @@ public abstract class Person {
      *
      * @return String (siehe Effekt)
      */
-    
+
     @Override
     public String toString() {
-        return "Konto{" +
-                "nutzername='" + nutzername + '\'' +
-                ", passwort='" + passwort + '\'' +
-                ", email='" + email + '\'' +
-                "vorname='" + vorname + '\'' +
-                ", nachname='" + nachname + '\'' +
-                ", anrede='" + anrede + '\'' +
-                ", telefonnummer='" + telefonnummer + '\'' +
-                ", adresse='" + adresse + '\'' +
-                '}';
+        String fullName = anrede + " " + vorname + " " + nachname;
+        String contactInfo = "E-Mail: " + email + ", Telefonnummer: " + telefonnummer + ", Adresse: " + adresse;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Nutzername: ").append(nutzername).append("\n")
+                .append("Vollständiger Name: ").append(fullName).append("\n")
+                .append("Kontaktdaten: ").append(contactInfo);
+
+        return stringBuilder.toString();
     }
 
     /**

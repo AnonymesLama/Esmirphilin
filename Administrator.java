@@ -19,11 +19,10 @@ public class Administrator extends Person {
      * @param passwort
      * @param email
      */
-    
-    public Administrator(String nutzername, String passwort, String email) {
-        super(nutzername, passwort, email);
-    }
 
+    public Administrator(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse) {
+        super(nutzername, passwort, email, vorname, nachname, anrede, telefonnummer, adresse);
+    }
 
     /**
      * Effekt: Gibt ein normales Konto als Vermieter frei.
