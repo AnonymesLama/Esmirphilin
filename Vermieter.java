@@ -58,43 +58,25 @@ public class Vermieter extends Person implements Comparable<Vermieter>{
     public void sperren() { this.freigegeben = false; }
 
     /**
-     * Mietobjekt Konstruktor
-     * Effekt: Erstellung eines neuen Mietobjekts
+     * Erstelle Mietobjekt
+     * Effekt: Fügt Mietobjekt der Vermieter-Mietobjektcollection hinzu.
      *
-     * @param kaltmiete
-     * @param warmmiete
-     * @param raeume
-     * @param wohnflaeche
-     * @param stockwerke
-     * @param wgEignung
-     * @param fruehestesEinzugsdatum
-     * @param hasKeller
-     * @param hasBalkon
-     * @param hasBadfenster
-     * @param hasKuechenfenster
-     * @param hasAufzug
-     * @param isRollstuhleignung
-     * @param hasEinbaukueche
-     * @param hasBadewanne
-     * @param isMoebeliert
-     * @param verm
+     * @param mietobjekt
      */
 
-    public void erstelleMietobjekt(double kaltmiete, double warmmiete, int raeume, double wohnflaeche, int stockwerke, boolean wgEignung, Date fruehestesEinzugsdatum, boolean hasKeller, boolean hasBalkon, boolean hasBadfenster, boolean hasKuechenfenster, boolean hasAufzug, boolean isRollstuhleignung, boolean hasEinbaukueche, boolean hasBadewanne, boolean isMoebeliert, Vermieter verm) {
-        Mietobjekt mietobjekt = new Mietobjekt(kaltmiete, warmmiete, raeume, wohnflaeche, stockwerke, wgEignung, fruehestesEinzugsdatum, hasKeller, hasBalkon, hasBadfenster, hasKuechenfenster, hasAufzug, isRollstuhleignung, hasEinbaukueche, hasBadewanne, isMoebeliert, verm);
+    public void erstelleMietobjekt(Mietobjekt mietobjekt) {
         mietobjekte.add(mietobjekt);
     }
 
     /**
-     * DeaktiviereMietobjekt Konstruktor
-     * Effekt: Deaktiviert einen Mietobjekt.
+     * Deaktiviere Mietobjekt
+     * Effekt: Entfernt Mietobjekt aus Vermieter-Mietobjektcollection.
      *
      * @param mietobjekt
      */
 
     public void deaktiviereMietobjekt(Mietobjekt mietobjekt) {
-        mietobjekt.deactivate();
-        mietobjekte.remove(mietobjekt); // Entferne das Mietobjekt aus der Liste der Vermieter-Mietobjekte
+        mietobjekte.remove(mietobjekt);
     }
 
     /**

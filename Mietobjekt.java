@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.List;
  */
 
 public class Mietobjekt implements Comparable<Mietobjekt> {
-	private boolean deactivated = false;
+	private boolean deaktiviert = false;
     private double kaltmiete;
     private double warmmiete;
     private double raeume;
@@ -86,6 +85,8 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
      * @return geben jeweils den Wert der Variable zurück
      */
 
+    public boolean isDeaktiviert() { return deaktiviert; }
+
 	public double getKaltmiete() {
         return kaltmiete;
     }
@@ -94,22 +95,17 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
         return warmmiete;
     }
 
-
     public double getRaeume() {
         return raeume;
     }
-
 
     public double getWohnflaeche() {
         return wohnflaeche;
     }
 
-
     public double getStockwerke() {
         return stockwerke;
     }
-
-
 
     public Date getFruehestesEinzugsdatum() {
         return fruehestesEinzugsdatum;
@@ -123,16 +119,13 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 		return preisProQuadratmeter;
 	}
 
-
     public double getNebenkosten() {
 		return nebenkosten;
 	}
 
-
     public Vermieter getVerm() {
 		return verm;
 	}
-
 
     public List<Bewerbung> getBewerbungen() {
         return bewerbungen;
@@ -141,7 +134,9 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
     /**
      * Alle folgenden Methoden sind Setter-Methoden
      *
-     * @return weißen den Wert des Parameters einer Variable zu
+     * @key String zur Beschreibung eines Ausstattungsmerkmals der Wohnung
+     * @value zum key zugehöriger Wert (true oder false), ob Ausstattung vorhanden ist
+     * @verm Vermieter, der in die Wohnung eingetragen werden soll
      */
 
     public void setAusstattung(String key, Boolean value ) {
@@ -150,6 +145,25 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
     public void setVerm(Vermieter verm) {
 			this.verm = verm;
+    }
+
+    /**
+     * Fachmethode zur endgültigen Deaktivierung von Fachobjekten
+     * Effekt: setzt das Attribut deactivated auf wahr und löscht alle zugeordneten Bewerbungen
+     */
+    public void deactivate(){
+        this.deaktiviert = true;
+        for (Bewerbung bewerbung : bewerbungen) {
+            bewerbungen.remove(bewerbung);
+        }
+    }
+
+    /**
+     * Fachmethode zur Wohnungsaktivierung:
+     * Attribut deaktiviert wird gleich false gesetzt
+     * */
+    public void activate() {
+        this.deaktiviert = false;
     }
 
     /**
@@ -184,24 +198,6 @@ public class Mietobjekt implements Comparable<Mietobjekt> {
 
         return sb.toString();
     }
-
-    /**
-     * Vorbedingung: Es darf vorausgesetzt werden, dass die Variable "deactivated" auf false gesetzt ist.
-     * Effekt: Setzt die Variable auf true, sodass das Mietobjekt deaktiviert wird.
-               Außerdem werden alle dazugehörigen Bewerbungen entfernt.
-     */
-
-    public void deactivate() {
-        // Setze das Attribut "deactivated" auf true, um das Mietobjekt als deaktiviert zu markieren
-	    deactivated = true;
-
-        // Entferne alle Bewerbungen für dieses Mietobjekt
-		    for (Bewerbung bewerbung : bewerbungen) {
-		        bewerbungen.remove(bewerbung);
-		    }
-
-		    //HIER: Einfügen: Aus der Bewerbungen Collections ebenfalls entfernen -> muss die noch schreiben
-	}
 
     /**
      * Compare Methoden

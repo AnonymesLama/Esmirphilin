@@ -18,32 +18,35 @@ public class MietobjektVerwaltung {
         return mietobjekte;
     }
 
-    //AUCH nach Excepions suchen, die technisch korrekt sind, aber logisch sinnlos sind (Startdatum muss vor Enddatum liegen bspw.)
     public static void setMietobjekte(List<Mietobjekt> mietobjekte) throws IllegalArgumentException, IndexOutOfBoundsException {
         MietobjektVerwaltung.mietobjekte = mietobjekte;
+    }
+
+    public static void newMietobjekt(Mietobjekt mo){
+        mietobjekte.add(mo);
     }
 
     /**
      * Mietobjekt Erstellung
      * Vorbedingung: Konstruktor der Klasse Mietobjekt wird aufgerufen und muss ein Mietobjekt erstellen. Ein Vermieterobjekt muss vorhanden sein.
      * Effekt: Instanziierung eines Mietobjekts und Hinzufügen in die Verwaltungs-Collection.
-     * @param kaltmiete
-     * @param warmmiete
-     * @param raeume
-     * @param wohnflaeche
-     * @param stockwerke
-     * @param wgEignung
-     * @param fruehestesEinzugsdatum
-     * @param keller
-     * @param balkon
-     * @param badfenster
-     * @param kuechenfenster
-     * @param aufzug
-     * @param rollstuhleignung
-     * @param einbaukueche
-     * @param badewanne
-     * @param moebeliert
-     * @param verm
+     * @param kaltmiete - Preis als Kommazahl
+     * @param warmmiete - Preis als Kommazahl
+     * @param raeume - Anzahl als Kommazahl
+     * @param wohnflaeche - Fläche als Kommazahl
+     * @param stockwerke - Anzahl als Kommazahl
+     * @param wgEignung - wahr oder falsch
+     * @param fruehestesEinzugsdatum - Datum
+     * @param keller - wahr oder falsch
+     * @param balkon - wahr oder falsch
+     * @param badfenster - wahr oder falsch
+     * @param kuechenfenster - wahr oder falsch
+     * @param aufzug - wahr oder falsch
+     * @param rollstuhleignung - wahr oder falsch
+     * @param einbaukueche - wahr oder falsch
+     * @param badewanne - wahr oder falsch
+     * @param moebeliert - wahr oder falsch
+     * @param verm - Vermieter-Objekt, das der Wohnung zugeordnet werden soll
      */
 
     public static void einstellen(double kaltmiete, double warmmiete, double raeume, double wohnflaeche, double stockwerke, boolean wgEignung,
@@ -52,6 +55,17 @@ public class MietobjektVerwaltung {
         Mietobjekt mietobjekt = new Mietobjekt(kaltmiete, warmmiete,  raeume, wohnflaeche, stockwerke, wgEignung, fruehestesEinzugsdatum, keller,  balkon,  badfenster, kuechenfenster,
         aufzug, rollstuhleignung, einbaukueche, badewanne, moebeliert, verm);
         mietobjekte.add(mietobjekt);
+        verm.erstelleMietobjekt(mietobjekt);
+    }
+
+    /**
+     * Fachmethode zur Reaktivierung eines Mietobjektes, nachdem es bereits erstellt wird.
+     * Wird der Liste mietobjekte <Mietobjekt> hinzugefügt
+     * @param mietobjekt - das zu aktivierende Mietobjekt
+     */
+    public static void aktivieren(Mietobjekt mietobjekt){
+        mietobjekt.activate();
+        mietobjekte.add(mietobjekt);
     }
 
     /**
@@ -59,21 +73,20 @@ public class MietobjektVerwaltung {
      * @param mo -> Zu entfernendes Mietobjekt
      */
 
-    public static void entfernen (Mietobjekt mo){
-        if(mietobjekte.contains(mo)){
-            mietobjekte.remove(mo);
-        }
+    public static void loeschen(Mietobjekt mo) {
+        mo.deactivate();
+        mietobjekte.remove(mo);
     }
 
-    public static List<Mietobjekt> filtern() {
-        Filter filter = new Filter();
+    public static List<Mietobjekt> filtern(String kriterium) {
+
         //Wie will ich hier filtern???????????????
         return mietobjekte; //absolut unnötig, hier würde gefilterte Liste zurückgegeben werden wenn möglich
     }
 
     /**
      * ToString Fachmethode
-     * Effekt: gibt eine String-Repräsentation der Klasse zurück
+     * Effekt: gibt eine String-Repräsentation der Collection aus ALLEN Mietobjekten zurück (auch die deaktivierten)
      *
      * @return String (siehe Effekt)
      */
@@ -84,30 +97,9 @@ public class MietobjektVerwaltung {
         sb.append("Mietobjekte:\n");
 
         for (Mietobjekt mietobjekt : mietobjekte) {
-            sb.append("Mietobjekt\n");
-            sb.append("Kaltmiete: ").append(mietobjekt.getKaltmiete()).append("\n");
-            sb.append("Warmmiete: ").append(mietobjekt.getWarmmiete()).append("\n");
-            sb.append("Räume: ").append(mietobjekt.getRaeume()).append("\n");
-            sb.append("Wohnfläche: ").append(mietobjekt.getWohnflaeche()).append("\n");
-            sb.append("Stockwerke: ").append(mietobjekt.getStockwerke()).append("\n");
-            sb.append("WG-Eignung: ").append(mietobjekt.isWgEignung()).append("\n");
-            sb.append("Frühestes Einzugsdatum: ").append(mietobjekt.getFruehestesEinzugsdatum()).append("\n");
-            sb.append("Keller: ").append(mietobjekt.hasKeller()).append("\n");
-            sb.append("Balkon: ").append(mietobjekt.hasBalkon()).append("\n");
-            sb.append("Badfenster: ").append(mietobjekt.hasBadfenster()).append("\n");
-            sb.append("Küchenfenster: ").append(mietobjekt.hasKuechenfenster()).append("\n");
-            sb.append("Aufzug: ").append(mietobjekt.hasAufzug()).append("\n");
-            sb.append("Rollstuhleignung: ").append(mietobjekt.isRollstuhleignung()).append("\n");
-            sb.append("Einbauküche: ").append(mietobjekt.hasEinbaukueche()).append("\n");
-            sb.append("Badewanne: ").append(mietobjekt.hasBadewanne()).append("\n");
-            sb.append("Möbliert: ").append(mietobjekt.isMoebeliert()).append("\n");
-            sb.append("Vermieter: ").append(mietobjekt.getVerm()).append("\n");
-            sb.append("\n");
+           sb.append(mietobjekt.toString() + "\n");
         }
 
         return sb.toString();
     }
-
-    //TO DO: Hier compareTo()
-
 }
