@@ -88,10 +88,16 @@ public class Vermieter extends Person implements Comparable<Vermieter>{
 
     @Override
     public String toString() {
+        String fullName = this.getAnrede() + " " + this.getVorname() + " " + this.getNachname();
+        String contactInfo = "E-Mail: " + this.getEmail() + ", Telefonnummer: " + this.getTelefonnummer() + ", Adresse: " + this.getAdresse();
+
         StringBuilder sb = new StringBuilder();
-        sb.append("Vermieter:\n");
-        sb.append("Mietobjekte: ").append(mietobjekte).append("\n");
-        sb.append("Freigegeben: ").append(freigegeben).append("\n");
+        sb.append("Nutzername: ").append(this.getNutzername()).append("\n")
+                .append("Vollständiger Name: ").append(fullName).append("\n")
+                .append("Kontaktdaten: ").append(contactInfo)
+                .append("Mietobjekte: ").append(mietobjekte).append("\n")
+                .append("Freigegeben: ").append(freigegeben).append("\n");
+
         return sb.toString();
     }
 
@@ -110,64 +116,32 @@ public class Vermieter extends Person implements Comparable<Vermieter>{
 
     /**
      * CompareTo Methode
-     * Effekt: Ermöglicht den Vergleich aller Variablen
+     * Effekt: Ermöglicht die Sortierung von Vermietern
      *
      * @param other
-     * @return liefert den Vergleichswert zurück
+     * @return liefert den Vergleichswert der Vermieter zurück
      */
 
     @Override
     public int compareTo(Vermieter other) {
-        int nutzernameComparison = this.getNutzername().compareTo(other.getNutzername());
-        if (nutzernameComparison != 0) {
-            return nutzernameComparison;
-        }
+        int moComparison = compare(this, other);
+        return moComparison;
+    }
 
-        int passwortComparison = this.getPasswort().compareTo(other.getPasswort());
-        if (passwortComparison != 0) {
-            return passwortComparison;
-        }
+    /**
+     * Compare-Methode
+     * Effekt: Ermöglicht die alphabetische Einordnung von Vermietern anhand der Nachnamen
+     *
+     * @param other
+     * @return liefert den Vergleichswert (welcher Nachname alphabetisch zuerst kommt) zurück
+     */
 
-        int emailComparison = this.getEmail().compareTo(other.getEmail());
-        if (emailComparison != 0) {
-            return emailComparison;
-        }
-
-        int vornameComparison = this.getVorname().compareTo(other.getVorname());
-        if (vornameComparison != 0) {
-            return vornameComparison;
-        }
-
+    public int compareNachname(Vermieter other) {
         int nachnameComparison = this.getNachname().compareTo(other.getNachname());
         if (nachnameComparison != 0) {
             return nachnameComparison;
         }
-
-        int anredeComparison = this.getAnrede().compareTo(other.getAnrede());
-        if (anredeComparison != 0) {
-            return anredeComparison;
-        }
-
-        int telefonnummerComparison = this.getTelefonnummer().compareTo(other.getTelefonnummer());
-        if (telefonnummerComparison != 0) {
-            return telefonnummerComparison;
-        }
-
-        int adresseComparison = this.getAdresse().compareTo(other.getAdresse());
-        if (adresseComparison != 0) {
-            return adresseComparison;
-        }
-
-        int freigegebenComparison = Boolean.compare(this.freigegeben, other.isFreigegeben());
-        if (freigegebenComparison != 0) {
-            return freigegebenComparison;
-        }
-
-        // Falls die Listen unterschiedlich lang sind, vergleiche die Längen
-        int mietobjekteSizeComparison = Integer.compare(this.mietobjekte.size(), other.mietobjekte.size());
-        if (mietobjekteSizeComparison != 0) {
-            return mietobjekteSizeComparison;
-        }
         return 0;
     }
+
 }
