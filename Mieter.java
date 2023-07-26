@@ -11,10 +11,11 @@ public class Mieter extends Person implements Comparable<Mieter> {
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
+    private double nettoeinkommen;
 
     /**
      * Bewerber Konstruktor
-     * Vorbedingung: Es darf vorausgesetzt werden, dass alle nötigen Attribute deklariert sind.
+     * Vorbedingung: Es darf vorausgesetzt werden, dass alle n&ouml;tigen Attribute deklariert sind.
      * Effekt: Instanziierung eines neuen Bewerbers.
      *
      * @param nutzername    the nutzername
@@ -28,13 +29,15 @@ public class Mieter extends Person implements Comparable<Mieter> {
      * @param haustiere     the haustiere
      * @param raucher       the raucher
      * @param vorstrafen    the vorstrafen
+     * @param nettoeinkommen    nettoeinkommen
      */
     
-    public Mieter(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse, int haustiere, boolean raucher, boolean vorstrafen) {
+    public Mieter(String nutzername, String passwort, String email, String vorname, String nachname, String anrede, String telefonnummer, String adresse, int haustiere, boolean raucher, boolean vorstrafen, double nettoeinkommen) {
         super(nutzername, passwort, email, vorname, nachname, anrede, telefonnummer, adresse);
         this.haustiere = haustiere;
         this.raucher = raucher;
         this.vorstrafen = vorstrafen;
+        this.nettoeinkommen = nettoeinkommen;
     }
 
     /**
@@ -57,6 +60,10 @@ public class Mieter extends Person implements Comparable<Mieter> {
         return vorstrafen;
     }
 
+    public double getNettoeinkommen() {
+        return nettoeinkommen;
+    }
+
     /**
      * ToString Fachmethode
      * Effekt: gibt eine String-Repräsentation der Klasse zurück
@@ -72,6 +79,7 @@ public class Mieter extends Person implements Comparable<Mieter> {
         sb.append("  Haustiere: ").append(haustiere).append("\n");
         sb.append("  Raucher: ").append(raucher).append("\n");
         sb.append("  Vorstrafen: ").append(vorstrafen).append("\n");
+        sb.append("  Nettoeinkommen: ").append(nettoeinkommen).append("\n");
         sb.append(super.toString());
         return sb.toString();
     }

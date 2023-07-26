@@ -65,7 +65,9 @@ public class Vermieter extends Person implements Comparable<Vermieter>{
      */
 
     public void erstelleMietobjekt(Mietobjekt mietobjekt) {
-        mietobjekte.add(mietobjekt);
+        if(this.freigegeben){
+            mietobjekte.add(mietobjekt);
+        }
     }
 
     /**
@@ -77,6 +79,23 @@ public class Vermieter extends Person implements Comparable<Vermieter>{
 
     public void deaktiviereMietobjekt(Mietobjekt mietobjekt) {
         mietobjekte.remove(mietobjekt);
+    }
+
+    /**
+     * Akzeptiere Bewerbung, geplantes Schnittstellenattribut für Bestätigungs-Knopf an Bewerbungen
+     * Effekt: Überprüft, ob die Bewerbung an einem Mietobjekt des Vermieters hängt. Wenn ja, wird das Mietobjekt deaktiviert.
+     *
+     * @param bewerbung
+     */
+    public void akzeptiereBewerbung(Bewerbung bewerbung){
+        for(Mietobjekt mo : mietobjekte){
+            for(Bewerbung bw : mo.getBewerbungen()){
+                if(bewerbung.equals(bw)){
+                    //SEND NOTIFICATION
+                    deaktiviereMietobjekt(mo);
+                }
+            }
+        }
     }
 
     /**

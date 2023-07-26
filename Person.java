@@ -126,14 +126,8 @@ public abstract class Person {
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
-
-
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
-    }
-    // NUR DEN ADMINISTRATOR NACHNAMEN ÄNDERN LASSEN
-
-
+    
+    
     public void setAnrede(String anrede) {
         this.anrede = anrede;
     }
@@ -146,6 +140,10 @@ public abstract class Person {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public void setNachname(String nachname){
+        this.nachname = nachname;
     }
 
     /**

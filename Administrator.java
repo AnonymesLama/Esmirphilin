@@ -42,5 +42,7 @@ public class Administrator extends Person {
         vermieter.sperren();
     }
 
-    //compareTo
+    public void setNachname(Person p, String nachname) {
+        p.setNachname(nachname);
+    }
 }

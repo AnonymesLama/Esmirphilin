@@ -1,5 +1,5 @@
 import java.util.Date;
-
+import java.util.List;
 
 /**
  * Klasse Bewerbung
@@ -16,7 +16,9 @@ public class Bewerbung implements Comparable<Bewerbung>{
     private String referenzen;
     private Mietobjekt mietobjekt;
     private Mieter mieter;
-
+    private static String anzahlMieter = "Anzahl Personen";
+    private static String fruehesterEinzug = "Frühester Einzug";
+    private static String nettoEinkommen = "Haushaltsnettoeinkommen";
 
     /**
      * Bewerbung Konstruktor
@@ -34,11 +36,14 @@ public class Bewerbung implements Comparable<Bewerbung>{
      */
 
     public Bewerbung(int anzahlPersonen, Date einzugszeitpunkt, boolean raucher, boolean vorstrafen, String referenzen, boolean zustimmung, Mietobjekt mietobjekt, Mieter mieter) {
-        this.anzahlPersonen = anzahlPersonen;
-        this.einzugszeitpunkt = einzugszeitpunkt;
-        this.referenzen = referenzen;
-        this.mietobjekt = mietobjekt;
-        this.mieter = mieter;
+        if(mieter.getNettoeinkommen()*3>=mietobjekt.getWarmmiete()){
+            this.anzahlPersonen = anzahlPersonen;
+            this.einzugszeitpunkt = einzugszeitpunkt;
+            this.referenzen = referenzen;
+            this.mietobjekt = mietobjekt;
+            this.mieter = mieter;
+        }
+        else { throw new IllegalArgumentException("Mieter hat nicht das notwendige Gehalt, um die Wohnung zu bezahlen."); }
     }
 
     /**
@@ -51,21 +56,36 @@ public class Bewerbung implements Comparable<Bewerbung>{
         return anzahlPersonen;
     }
 
-
     public Date getEinzugszeitpunkt() {
         return einzugszeitpunkt;
     }
-
 
     public String getReferenzen() {
         return referenzen;
     }
 
-
     public Mietobjekt getMietobjekt() { return mietobjekt; }
 
-
     public Mieter getMieter() { return mieter; }
+
+    /**
+     * Fachmethode: Sortieren der Bewerbung nach Attributen
+     * @kriterium: Hier wird als String angegeben, nach welchem Kriterium gefiltert wird (anzahlMieter fruehesterEinzug, nettoEinkommen). Strings sind statische Attribute der Klasse.
+     * HINWEIS SCHNITTSTELLE: Parameter als static Strings in Klasse Bewerbung ablesbar.
+     */
+    public static List<Bewerbung> sortieren(List<Bewerbung> bewerbungen, String kriterium) {
+        List<Bewerbung> sortiert = bewerbungen;
+        if(kriterium.equalsIgnoreCase(anzahlMieter)){
+            sortiert.sort(Bewerbung::compareAnzahlMieter);
+        }
+        else if(kriterium.equalsIgnoreCase(fruehesterEinzug)){
+            sortiert.sort(Bewerbung::compareFruehesterEinzug);
+        }
+        else if(kriterium.equalsIgnoreCase(nettoEinkommen)){
+            sortiert.sort(Bewerbung::compareNettoEinkommen);
+        }
+        return sortiert;
+    }
 
     /**
      * ToString Fachmethode
@@ -122,4 +142,27 @@ public class Bewerbung implements Comparable<Bewerbung>{
         return 0;
     }
 
+    public int compareAnzahlMieter(Bewerbung other) {
+        int anzahlPersonenComparison = Double.compare(this.anzahlPersonen, other.anzahlPersonen);
+        if (anzahlPersonenComparison != 0) {
+            return anzahlPersonenComparison;
+        }
+        return 0;
+    }
+
+    public int compareFruehesterEinzug(Bewerbung other) {
+        int einzugsDatumComparison = this.einzugszeitpunkt.compareTo(other.einzugszeitpunkt);
+        if (einzugsDatumComparison != 0) {
+            return einzugsDatumComparison;
+        }
+        return 0;
+    }
+
+    public int compareNettoEinkommen(Bewerbung other) {
+        int nettoEinkommenComparison = Double.compare(this.mieter.getNettoeinkommen(), other.mieter.getNettoeinkommen());
+        if (nettoEinkommenComparison != 0) {
+            return nettoEinkommenComparison;
+        }
+        return 0;
+    }
 }
