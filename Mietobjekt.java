@@ -1,7 +1,10 @@
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Klasse Mietobjekt
@@ -12,9 +15,13 @@ import java.util.List;
  * @version 1
  * Historie:
  */
-
+@Entity
 public class Mietobjekt implements Comparable<Mietobjekt> {
-	private boolean deaktiviert = false;
+@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+    private boolean deaktiviert = false;
     private double kaltmiete;
     private double warmmiete;
     private double raeume;
