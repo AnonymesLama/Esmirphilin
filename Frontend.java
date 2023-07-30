@@ -41,6 +41,7 @@ public class MietverwaltungGUI {
         mainFrame.add(addButton, BorderLayout.SOUTH);
 
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setTitle("Miet Me");
         mainFrame.setSize(400, 300);
         mainFrame.setVisible(true);
     }
