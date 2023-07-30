@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Klasse Vermieter
@@ -11,7 +14,12 @@ import java.util.List;
  * Historie:
  */
 
+@Entity
 public class Vermieter extends Person implements Comparable<Vermieter>{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private List<Mietobjekt> mietobjekte;
     private boolean freigegeben = false;
 
