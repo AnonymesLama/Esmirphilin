@@ -1,3 +1,7 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Klasse User
@@ -7,9 +11,12 @@
  * @version 1
  * Historie:
  */
-
+@Entity
 public abstract class Person {
-
+@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nutzername;
     private String passwort;
     private String email;
