@@ -1,5 +1,9 @@
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Klasse Wohnungswuensche
@@ -9,8 +13,12 @@ import java.util.List;
  * Historie:
  */
 
+@Entity
 public class Wohnungswuensche {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private double kaltmieteMaximum;
     private double kaltmieteMinimum = 0;
     private double warmmieteMaximum;
