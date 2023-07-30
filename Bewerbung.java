@@ -1,5 +1,9 @@
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Klasse Bewerbung
@@ -10,7 +14,12 @@ import java.util.List;
  * Historie:
  */
 
+@Entity
 public class Bewerbung implements Comparable<Bewerbung>{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private int anzahlPersonen;
     private Date einzugszeitpunkt;
     private String referenzen;
