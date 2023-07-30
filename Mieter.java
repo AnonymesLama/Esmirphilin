@@ -1,3 +1,8 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Klasse Bewerber
  * Zweck: Realisiert eine neue Bewerbung, der von der Klasse Nutzer erbt.
@@ -7,7 +12,12 @@
  * Historie:
  */
 
+@Entity
 public class Mieter extends Person implements Comparable<Mieter> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private int haustiere;
     private boolean raucher;
     private boolean vorstrafen;
